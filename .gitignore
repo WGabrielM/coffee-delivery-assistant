@@ -1,0 +1,10 @@
+node_modules/
+.env.local
+.env
+*.db
+*.db-journal
+*.db-wal
+dist/
+.DS_Store
+npm-debug.log*
+yarn-error.log*
