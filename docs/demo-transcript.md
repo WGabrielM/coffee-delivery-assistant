@@ -6,7 +6,7 @@ Gerado por `yarn demo`. A conversa exercita memória de sessão, recuperação (
 
 **Pergunta:** Quais cafés o catálogo tem?
 
-**Resposta:** O catálogo tem 14 cafés: Expresso Tradicional, Expresso Americano, Expresso Cremoso, Expresso Gelado, Café com Leite, Latte, Capuccino, Macchiato, Mocaccino, Chocolate Quente, Cubano, Havaiano, Árabe e Irlandês.
+**Resposta:** O catálogo tem 14 cafés: Expresso Tradicional, Expresso Americano, Expresso Cremoso, Expresso Gelado, Café com Leite, Latte, Capuccino, Macchiato, Mocaccino, Chocolate Quente, Cubano, Havaiano, Árabe, Irlandês.
 
 - `na_base`: true
 - Fonte citada: `00-visao-geral#Estado atual do projeto (código)`, `05-catalogo-de-cafes#Tags`

@@ -13,7 +13,7 @@ Gerado por `yarn eval`. Conjunto: 15 perguntas em 11 conversas.
 | Contrato de formato válido | 100.0% (15/15) |
 | Regras respeitadas (validação) | 100.0% (15/15) |
 
-Custo da execução: 53 chamadas à API, 26116 tokens de entrada, 897 de saída.
+Custo da execução: 53 chamadas à API, 26174 tokens de entrada, 924 de saída.
 
 ## Nota por pergunta
 
