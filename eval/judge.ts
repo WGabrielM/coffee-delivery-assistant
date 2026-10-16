@@ -33,7 +33,7 @@ async function nota(system: string, user: string): Promise<number> {
 
 const FIDELIDADE_SYSTEM = `
 Você avalia a FIDELIDADE de uma resposta aos trechos de contexto fornecidos.
-Dê uma nota inteira de 0 a 2 e responda APENAS com {"nota": 0|1|2}.
+Dê uma nota inteira de 0 a 2 e responda APENAS com um JSON no formato {"nota": 0|1|2}.
 - 2: tudo o que a resposta afirma está apoiado nos trechos; nada foi inventado.
 - 1: majoritariamente apoiada, mas com algum detalhe não sustentado pelos trechos.
 - 0: afirma algo que contradiz os trechos ou que não está neles.
@@ -44,7 +44,7 @@ informação deve receber nota 2.
 const COERENCIA_SYSTEM = `
 Você avalia a COERÊNCIA DO HISTÓRICO de uma resposta em uma conversa.
 A pergunta atual depende de turnos anteriores (ex.: "cada um deles", "a primeira").
-Dê uma nota inteira de 0 a 2 e responda APENAS com {"nota": 0|1|2}.
+Dê uma nota inteira de 0 a 2 e responda APENAS com um JSON no formato {"nota": 0|1|2}.
 - 2: a resposta resolve corretamente a referência ao que foi dito antes.
 - 1: resolve parcialmente ou de forma ambígua.
 - 0: ignora o histórico ou resolve a referência errada.
