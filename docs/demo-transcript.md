@@ -6,10 +6,10 @@ Gerado por `yarn demo`. A conversa exercita memória de sessão, recuperação (
 
 **Pergunta:** Quais cafés o catálogo tem?
 
-**Resposta:** O catálogo tem 14 cafés: 9 tradicionais (Expresso Tradicional, Expresso Americano, Expresso Cremoso, Expresso Gelado, Café com Leite, Latte, Capuccino, Macchiato, Mocaccino) e 5 especiais (Chocolate Quente, Cubano, Havaiano, Árabe, Irlandês).
+**Resposta:** O catálogo tem 14 cafés: Expresso Tradicional, Expresso Americano, Expresso Cremoso, Expresso Gelado, Café com Leite, Latte, Capuccino, Macchiato, Mocaccino, Chocolate Quente, Cubano, Havaiano, Árabe e Irlandês.
 
 - `na_base`: true
-- Fonte citada: `05-catalogo-de-cafes#Tags`, `00-visao-geral#Estado atual do projeto (código)`
+- Fonte citada: `00-visao-geral#Estado atual do projeto (código)`, `05-catalogo-de-cafes#Tags`
 - Trechos recuperados: `05-catalogo-de-cafes#Como o catálogo é carregado` (0.72), `00-visao-geral#Estado atual do projeto (código)` (0.66), `05-catalogo-de-cafes#Tags` (0.64), `README#Introdução` (0.64), `05-catalogo-de-cafes#Atualização do catálogo` (0.63)
 - Validação: ok
 
@@ -17,22 +17,22 @@ Gerado por `yarn demo`. A conversa exercita memória de sessão, recuperação (
 
 **Pergunta:** Quanto custa cada um deles?
 
-**Resposta:** A informação não consta na base de conhecimento.
+**Resposta:** Cada um dos 14 cafés custa R$ 9,90.
 
-- `na_base`: false
-- Fonte citada: —
-- Trechos recuperados: —
+- `na_base`: true
+- Fonte citada: `05-catalogo-de-cafes#Preços`
+- Trechos recuperados: `05-catalogo-de-cafes#Preços` (0.62), `12-fluxo-de-compra#Tela 1 — Catálogo (Home)` (0.62), `05-catalogo-de-cafes#Atualização do catálogo` (0.60), `00-visao-geral#Fluxo desejado, passo a passo` (0.55), `05-catalogo-de-cafes#Os 14 cafés` (0.55)
 - Validação: ok
 
 ## Turno 3
 
 **Pergunta:** E dá para pagar esses pedidos com cartão online?
 
-**Resposta:** Não, o pagamento é feito na entrega e não online.
+**Resposta:** A informação não consta na base de conhecimento.
 
-- `na_base`: true
-- Fonte citada: `06-carrinho-e-pedido#Pagamento`
-- Trechos recuperados: `06-carrinho-e-pedido#Pedido` (0.48), `12-fluxo-de-compra#Tela 2 — Checkout` (0.48), `06-carrinho-e-pedido#Pagamento` (0.47), `06-carrinho-e-pedido#Itens do pedido` (0.46), `11-seguranca#Pagamento` (0.46)
+- `na_base`: false
+- Fonte citada: —
+- Trechos recuperados: `12-fluxo-de-compra#Tela 2 — Checkout` (0.47), `06-carrinho-e-pedido#Pagamento` (0.46), `11-seguranca#Pagamento` (0.46), `06-carrinho-e-pedido#Pedido` (0.44), `12-fluxo-de-compra#Tela 3 — Confirmação (Success)` (0.42)
 - Validação: ok
 
 ## O que esta conversa demonstra

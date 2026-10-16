@@ -10,7 +10,7 @@
     "recuperacaoRelevante": false,
     "contratoValido": true,
     "regrasOk": true,
-    "fidelidade": 2,
+    "fidelidade": 1,
     "coerencia": null,
     "erros": []
   },
@@ -20,13 +20,13 @@
     "tipo": "follow_up_memoria",
     "pergunta": "Quanto custa cada um deles?",
     "na_base_esperado": true,
-    "na_base_obtido": false,
-    "decisaoCorreta": false,
-    "recuperacaoRelevante": false,
+    "na_base_obtido": true,
+    "decisaoCorreta": true,
+    "recuperacaoRelevante": true,
     "contratoValido": true,
     "regrasOk": true,
     "fidelidade": 2,
-    "coerencia": 1,
+    "coerencia": 2,
     "erros": []
   },
   {
@@ -35,13 +35,13 @@
     "tipo": "follow_up_memoria",
     "pergunta": "E dá para pagar esses pedidos com cartão online?",
     "na_base_esperado": true,
-    "na_base_obtido": true,
-    "decisaoCorreta": true,
+    "na_base_obtido": false,
+    "decisaoCorreta": false,
     "recuperacaoRelevante": true,
     "contratoValido": true,
     "regrasOk": true,
     "fidelidade": 2,
-    "coerencia": 2,
+    "coerencia": 0,
     "erros": []
   },
   {

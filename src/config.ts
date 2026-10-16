@@ -87,3 +87,14 @@ export const MEMORY_DB_PATH = process.env.MEMORY_DB_PATH ?? "memory.db";
  * recusa legítima ("não revelo a senha do banco") continue válida.
  */
 export const CREDENTIAL_PATTERN = /\badmin\b/i;
+
+// ---------------------------------------------------------------------------
+// Contextualização do follow-up (seção 2 + 3): reescreve a pergunta usando o
+// histórico ANTES de recuperar, para o pronome do follow-up não derrubar o
+// trecho certo do top-k. Desligue com RAG_CONTEXTUALIZE=false para comparar.
+// ---------------------------------------------------------------------------
+
+const toBool = (value: string | undefined, fallback: boolean): boolean =>
+  value === undefined || value.trim() === "" ? fallback : value.trim().toLowerCase() === "true";
+
+export const RAG_CONTEXTUALIZE = toBool(process.env.RAG_CONTEXTUALIZE, true);

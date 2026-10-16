@@ -1,6 +1,7 @@
 // ORQUESTRADOR: amarra as quatro camadas em um fluxo por pergunta.
 //
 //   pergunta
+//     → contextualização do follow-up (usa a memória)      [rag/contextualizeQuery]
 //     → recuperação (RAG)                     [rag/retrieve]
 //     → montagem do prompt com regras + memória [rules/systemPrompt, memory/*]
 //     → geração (LLM)                          [clients/openai]
@@ -13,6 +14,7 @@ import { openai, callOpenAI } from "./clients/openai.ts";
 import { CHAT_MODEL, TEMPERATURE } from "./config.ts";
 import type { AssistantResult } from "./types.ts";
 import { retrieve } from "./rag/retrieve.ts";
+import { contextualizeQuery } from "./rag/contextualizeQuery.ts";
 import { VectorStore } from "./rag/vectorStore.ts";
 import { SessionMemory } from "./memory/sessionMemory.ts";
 import { PersistentMemory, formatFactsBlock } from "./memory/persistentMemory.ts";
@@ -39,25 +41,30 @@ export class Assistant {
 
   /** Processa uma pergunta e devolve resposta, trechos usados, texto cru e validação. */
   async ask(question: string): Promise<AssistantResult> {
-    // 1. Recuperação (RAG): trechos relevantes para ESTA pergunta.
-    const retrieved = await retrieve(question, this.store);
+    // 1. Contextualização: resolve o follow-up ("...deles?") numa pergunta
+    //    autônoma usando o histórico, para a busca não perder o trecho certo.
+    const searchQuery = await contextualizeQuery(question, this.session.getMessages());
 
-    // 2. Memória persistente (fatos entre sessões) entra como bloco no sistema.
+    // 2. Recuperação (RAG): trechos relevantes para a pergunta contextualizada.
+    const retrieved = await retrieve(searchQuery, this.store);
+
+    // 3. Memória persistente (fatos entre sessões) entra como bloco no sistema.
     const factsBlock = this.persistent
       ? formatFactsBlock(this.persistent.memory.all(this.persistent.sessionId))
       : "";
 
-    // 3. Monta o prompt: regras + fatos + histórico da sessão + contexto + pergunta.
+    // 4. Monta o prompt: regras + fatos + histórico da sessão + contexto + pergunta
+    //    ORIGINAL (a geração responde à pergunta do usuário, não à reescrita).
     const messages = buildMessages(question, retrieved, this.session.getMessages(), factsBlock);
 
-    // 4. Geração.
+    // 5. Geração.
     const raw = await this.generate(messages);
 
-    // 5. Validação da saída contra o contrato de regras.
+    // 6. Validação da saída contra o contrato de regras.
     const answer = parseAnswer(raw) ?? FALLBACK_ANSWER;
     const validation = validateAnswer(answer, retrieved.map((chunk) => chunk.id));
 
-    // 6. Atualiza a memória de sessão (guarda a pergunta e a resposta crua).
+    // 7. Atualiza a memória de sessão (guarda a pergunta e a resposta crua).
     this.session.addUserMessage(question);
     this.session.addAssistantMessage(raw);
 
